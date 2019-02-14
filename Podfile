@@ -6,6 +6,9 @@ target 'Instagram' do
   use_frameworks!
 
   # Pods for Instagram
-  pod 'Alamofire', '~> 5.0.0-beta.2'
+  pod 'Alamofire', '~> 4.8'
+  pod 'SwiftyJSON', '~> 4.0.0'
+  pod 'ObjectMapper', '~> 3.4'
+  pod 'AlamofireImage', '~> 3.5'
 
 end

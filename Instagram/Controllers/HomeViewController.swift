@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import SwiftyJSON
+import ObjectMapper
+import AlamofireImage
 
 class HomeViewController: UIViewController {
     
     var storyImages = StoryData()
-    var posts = PostData()
+    var postData: PostData?
+    var posts: [Post] = []
     
     @IBOutlet weak var storyCollectionView: UICollectionView!
     
@@ -24,8 +28,16 @@ class HomeViewController: UIViewController {
         let storyLayout = storyCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         storyLayout.itemSize = CGSize(width: height, height: height)
         
-        let postLayout = postCollectionView.collectionViewLayout as!UICollectionViewFlowLayout
-        postLayout.estimatedItemSize = CGSize(width: view.frame.size.width, height: view.frame.size.width)
+        if let layout = postCollectionView?.collectionViewLayout as? PostLayout {
+            layout.delegate = self
+        }
+        
+        NetworkManager.get(fromUrl: URL(string: "https://jsonblob.com/api/4074c5dc-2dd1-11e9-8c29-6d3427129fcf")!, completion:
+            {[unowned self] response in
+                let json = JSON(response as Any)
+                self.postData = Mapper<PostData>().map(JSONString: json.rawString()!)
+                self.addPosts()
+        })
     }
 }
 
@@ -34,7 +46,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if collectionView == storyCollectionView{
             return 6
         }else{
-            return 2
+            return posts.count
         }
         
     }
@@ -47,11 +59,46 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PostCell", for: indexPath) as! PostCell
-            cell.post = posts.posts[0]
+            let post = posts[indexPath.item]
+            cell.post = post
+            guard let image = post.image else{
+                NetworkManager.retrieveImage(for: post.imageUrl!, completion: {[unowned self] response in
+                    let image = response
+                    self.posts[indexPath.item].image = image
+                    cell.postImage.image = image
+                    self.postCollectionView.reloadItems(at: [indexPath])    
+                })
+                return cell
+            }
+            cell.postImage.image = image
             return cell
         }
+    }
+    
+    func addPosts(){
+        var indexPath: [IndexPath] = []
+        for i in 0...postData!.posts!.count - 10 {
+            indexPath.append(IndexPath(item: posts.count, section: 0))
+            posts.append((postData?.posts![i])!)
+        }
         
-    }   
+        postCollectionView.insertItems(at: indexPath)
+    }
+}
+
+extension HomeViewController: PosttLayoutDelegate{
+    func collectionView(_ collectionView: UICollectionView, heightForPhotoAtIndexPath indexPath: IndexPath) -> CGFloat {
+        let post = posts[indexPath.item]
+        guard let image = post.image else{
+         return 248.50
+        }
+        let width = view.frame.size.width
+        let ratio = image.size.width / image.size.height
+        let height = width / ratio
+        return height
+    }
+        
+    
     
 }
 

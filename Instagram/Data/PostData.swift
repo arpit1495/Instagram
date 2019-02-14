@@ -8,11 +8,17 @@
 
 import Foundation
 import UIKit
+import ObjectMapper
 
-class PostData{
-    var posts: [Post] = []
+class PostData: Mappable {
+    var posts: [Post]?
+    var timestamp: Int?
     
-    init(){
-        posts.append(Post(user: "Arpit", userImage: UIImage(named: "avatar")!, postImage: UIImage(named: "ucl")!, caption: "UCL is back"))
+    required init?(map: Map) {
+    }
+    
+    func mapping(map: Map) {
+        posts <- map["posts"]
+        timestamp <- map["timestamp"]
     }
 }

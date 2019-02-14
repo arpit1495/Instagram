@@ -14,6 +14,8 @@
 		7A9CC89422116F6900A64087 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC89322116F6900A64087 /* PostCell.swift */; };
 		7A9CC896221173D400A64087 /* StoryLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC895221173D400A64087 /* StoryLayout.swift */; };
 		7A9CC898221173E700A64087 /* PostLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC897221173E700A64087 /* PostLayout.swift */; };
+		7AA28F1D2213F0530040F845 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA28F1C2213F0530040F845 /* NetworkProtocol.swift */; };
+		7AA28F1F2213F2B90040F845 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA28F1E2213F2B90040F845 /* NetworkManager.swift */; };
 		7ABA9751220D89B200A77472 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA9750220D89B200A77472 /* AppDelegate.swift */; };
 		7ABA9753220D89B200A77472 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ABA9752220D89B200A77472 /* HomeViewController.swift */; };
 		7ABA9756220D89B200A77472 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7ABA9754220D89B200A77472 /* Main.storyboard */; };
@@ -31,6 +33,8 @@
 		7A9CC89322116F6900A64087 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		7A9CC895221173D400A64087 /* StoryLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryLayout.swift; sourceTree = "<group>"; };
 		7A9CC897221173E700A64087 /* PostLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostLayout.swift; sourceTree = "<group>"; };
+		7AA28F1C2213F0530040F845 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		7AA28F1E2213F2B90040F845 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7ABA974D220D89B200A77472 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ABA9750220D89B200A77472 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7ABA9752220D89B200A77472 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -98,6 +102,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		7AA28F1B2213F02A0040F845 /* NetworkFramework */ = {
+			isa = PBXGroup;
+			children = (
+				7AA28F1C2213F0530040F845 /* NetworkProtocol.swift */,
+				7AA28F1E2213F2B90040F845 /* NetworkManager.swift */,
+			);
+			path = NetworkFramework;
+			sourceTree = "<group>";
+		};
 		7ABA9744220D89B200A77472 = {
 			isa = PBXGroup;
 			children = (
@@ -119,6 +132,7 @@
 		7ABA974F220D89B200A77472 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				7AA28F1B2213F02A0040F845 /* NetworkFramework */,
 				7A05099722118EE60099B078 /* Data */,
 				7A9CC89022114F4B00A64087 /* Views */,
 				7A9CC88F22114F4100A64087 /* Layouts */,
@@ -138,7 +152,6 @@
 				D1D8FA3095A275D7D2938619 /* Pods-Instagram.debug.xcconfig */,
 				A4542AAE53F654EF1C5A744D /* Pods-Instagram.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -221,12 +234,18 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Instagram/Pods-Instagram-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -264,7 +283,9 @@
 			files = (
 				7ABA9753220D89B200A77472 /* HomeViewController.swift in Sources */,
 				7A8950472212CCD30090F2BA /* PostData.swift in Sources */,
+				7AA28F1D2213F0530040F845 /* NetworkProtocol.swift in Sources */,
 				7A9CC898221173E700A64087 /* PostLayout.swift in Sources */,
+				7AA28F1F2213F2B90040F845 /* NetworkManager.swift in Sources */,
 				7A9CC896221173D400A64087 /* StoryLayout.swift in Sources */,
 				7ABA9751220D89B200A77472 /* AppDelegate.swift in Sources */,
 				7A05099922118F060099B078 /* StoryData.swift in Sources */,

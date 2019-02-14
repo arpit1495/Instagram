@@ -8,29 +8,50 @@
 
 import Foundation
 import UIKit
+import ObjectMapper
 
-class Post{
-    var user: String
-    var userImage: UIImage
-    var postImage: UIImage
-    var caption: String
+class User: Mappable {
+    var id: Int?
+    var name: String?
+    var avatarUrl: String?
     
-    init(user: String,
-         userImage: UIImage,
-         postImage: UIImage,
-         caption: String){
-        self.user = user
-        self.userImage = userImage
-        self.postImage = postImage
-        self.caption = caption
+    required init?(map: Map) {
     }
     
-    convenience init(dictionary: NSDictionary) {
-        let user = dictionary["user"] as! String
-        let userImage = dictionary["userImage"] as! UIImage
-        let postImage = dictionary["postImage"] as! UIImage
-        let caption = dictionary["caption"] as! String
+    func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+        avatarUrl <- map["avatarUrl"]
+    }
+    
+    
+}
+
+class Post: Mappable {
+    
+    
+    var user: User?
+    var id: Int?
+    var caption: String?
+    var location: String?
+    var likes: Int?
+    var comments: Int?
+    var imageUrl: String?
+    var likeStatus: Bool?
+    var image: UIImage?
+    
+    required init?(map: Map) {
         
-        self.init(user: user, userImage: userImage, postImage: postImage, caption: caption)
+    }
+    
+    func mapping(map: Map) {
+        user <- map["user"]
+        id <- map["id"]
+        caption <- map["caption"]
+        location <- map["location"]
+        likes <- map["likes"]
+        comments <- map["comments"]
+        imageUrl <- map["imageUrl"]
+        likeStatus <- map["likeStatus"]
     }
 }
