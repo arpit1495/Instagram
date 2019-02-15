@@ -17,6 +17,16 @@ class PostCell: UICollectionViewCell {
             userImage.af_setImage(withURL: URL(string: (post!.user?.avatarUrl)!)!)
 //            postImage.af_setImage(withURL: URL(string: (post?.imageUrl)!)!)
             captionLabel.text = post?.caption
+            userImage.layer.cornerRadius = userImage.bounds.size.height / 2
+            userImage.clipsToBounds = true
+            userImage.layer.borderWidth = 0
+            
+            if(post?.likeStatus ?? false){
+                likeButton.setImage(UIImage(named: "heart"), for: .normal)
+            }else{
+                likeButton.setImage(UIImage(named: "like"), for: .normal)
+            }
+            likesLabel.text = "♥ \(String(describing: post!.likes!)) likes"
         }
     }
     
@@ -26,8 +36,23 @@ class PostCell: UICollectionViewCell {
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var postImage: UIImageView!
-    @IBOutlet weak var likeButton: UIImageView!
-    @IBOutlet weak var commentButton: UIImageView!
-    @IBOutlet weak var shareButton: UIImageView!
+    
+    @IBOutlet weak var likeButton: UIButton!
+    
+    @IBOutlet weak var commentButton: UIButton!
+    
+    @IBOutlet weak var sendButton: UIButton!
+    @IBAction func toogleLike(_ sender: Any) {
+        post?.likeStatus = !(post?.likeStatus)!
+        if(post?.likeStatus ?? false){
+            likeButton.setImage(UIImage(named: "heart"), for: .normal)
+            post?.likes! += 1
+            likesLabel.text = "♥ \(String(describing: post!.likes!)) likes"
+        }else{
+            likeButton.setImage(UIImage(named: "like"), for: .normal)
+            post?.likes! -= 1
+            likesLabel.text = "♥ \(String(describing: post!.likes!)) likes"
+        }
+    }
 }
 

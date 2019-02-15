@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7A05099922118F060099B078 /* StoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A05099822118F060099B078 /* StoryData.swift */; };
+		7A2D71062216B331005D77EF /* PostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D71052216B331005D77EF /* PostHeaderView.swift */; };
 		7A8950452212C7C80090F2BA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8950442212C7C80090F2BA /* Post.swift */; };
 		7A8950472212CCD30090F2BA /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8950462212CCD30090F2BA /* PostData.swift */; };
 		7A9CC89222116F5600A64087 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC89122116F5600A64087 /* StoryCell.swift */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		597E54E30A95E3DE301D744A /* Pods_Instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A05099822118F060099B078 /* StoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryData.swift; sourceTree = "<group>"; };
+		7A2D71052216B331005D77EF /* PostHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeaderView.swift; sourceTree = "<group>"; };
 		7A8950442212C7C80090F2BA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		7A8950462212CCD30090F2BA /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		7A9CC89122116F5600A64087 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			children = (
 				7A9CC89122116F5600A64087 /* StoryCell.swift */,
 				7A9CC89322116F6900A64087 /* PostCell.swift */,
+				7A2D71052216B331005D77EF /* PostHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				7AA28F1D2213F0530040F845 /* NetworkProtocol.swift in Sources */,
 				7A9CC898221173E700A64087 /* PostLayout.swift in Sources */,
 				7AA28F1F2213F2B90040F845 /* NetworkManager.swift in Sources */,
+				7A2D71062216B331005D77EF /* PostHeaderView.swift in Sources */,
 				7A9CC896221173D400A64087 /* StoryLayout.swift in Sources */,
 				7ABA9751220D89B200A77472 /* AppDelegate.swift in Sources */,
 				7A05099922118F060099B078 /* StoryData.swift in Sources */,
