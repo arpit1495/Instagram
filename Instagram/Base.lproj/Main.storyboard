@@ -30,18 +30,139 @@
         <!--Search View Controller-->
         <scene sceneID="Abw-P8-ldn">
             <objects>
-                <viewController id="GjJ-JE-K7C" userLabel="Search View Controller" sceneMemberID="viewController">
+                <viewController id="GjJ-JE-K7C" userLabel="Search View Controller" customClass="SearchViewController" customModule="Instagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dCv-v2-vfs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Ag0-Ef-odM">
+                                <rect key="frame" x="0.0" y="20" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ryb-22-ftd">
+                                <rect key="frame" x="0.0" y="84" width="375" height="107.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="rPa-8E-0Xs">
+                                    <size key="itemSize" width="130" height="104"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SearchStory" id="J3r-Jj-HyM" customClass="StoryCell" customModule="Instagram" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="2" width="130" height="104"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="104"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iA1-hQ-t9a">
+                                                    <rect key="frame" x="26" y="8" width="78" height="78"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="iA1-hQ-t9a" secondAttribute="height" multiplier="1:1" id="nnc-rh-HRl"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Story" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bUk-rV-fPK">
+                                                    <rect key="frame" x="0.0" y="86" width="130" height="18"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="iA1-hQ-t9a" firstAttribute="top" secondItem="J3r-Jj-HyM" secondAttribute="top" constant="8" id="0SR-uB-eZ2"/>
+                                            <constraint firstItem="bUk-rV-fPK" firstAttribute="top" secondItem="iA1-hQ-t9a" secondAttribute="bottom" id="3Lh-TW-nPH"/>
+                                            <constraint firstItem="iA1-hQ-t9a" firstAttribute="height" secondItem="J3r-Jj-HyM" secondAttribute="height" multiplier="0.75" id="Mpv-P4-BMK"/>
+                                            <constraint firstAttribute="bottom" secondItem="bUk-rV-fPK" secondAttribute="bottom" id="NbL-SZ-e4h"/>
+                                            <constraint firstItem="iA1-hQ-t9a" firstAttribute="centerX" secondItem="J3r-Jj-HyM" secondAttribute="centerX" id="YaP-So-kJf"/>
+                                            <constraint firstItem="bUk-rV-fPK" firstAttribute="leading" secondItem="J3r-Jj-HyM" secondAttribute="leading" id="nOH-x4-MAn"/>
+                                            <constraint firstAttribute="trailing" secondItem="bUk-rV-fPK" secondAttribute="trailing" id="vCw-pC-uQc"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="storyImage" destination="iA1-hQ-t9a" id="tHM-fK-4Qa"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="GjJ-JE-K7C" id="GHP-7A-oNf"/>
+                                    <outlet property="delegate" destination="GjJ-JE-K7C" id="v4o-Ye-OtT"/>
+                                </connections>
+                            </collectionView>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rch-qt-wHO">
+                                <rect key="frame" x="0.0" y="191.5" width="375" height="426.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="61N-rf-V7X" customClass="GridLayout" customModule="Instagram" customModuleProvider="target">
+                                    <size key="itemSize" width="176" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoGrid" id="l7s-iL-cdV" customClass="PhotoGridCell" customModule="Instagram" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="176" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="176" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8sK-vD-fLj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="176" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="8sK-vD-fLj" secondAttribute="trailing" id="XBo-jJ-gUh"/>
+                                            <constraint firstItem="8sK-vD-fLj" firstAttribute="leading" secondItem="l7s-iL-cdV" secondAttribute="leading" id="XCH-5O-UDC"/>
+                                            <constraint firstAttribute="bottom" secondItem="8sK-vD-fLj" secondAttribute="bottom" id="hLK-fx-ESp"/>
+                                            <constraint firstItem="8sK-vD-fLj" firstAttribute="top" secondItem="l7s-iL-cdV" secondAttribute="top" id="lxy-ca-A6E"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="image" destination="8sK-vD-fLj" id="eMM-67-Fjw"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="GjJ-JE-K7C" id="UEP-yP-Nml"/>
+                                    <outlet property="delegate" destination="GjJ-JE-K7C" id="73g-gg-WOU"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ag0-Ef-odM" firstAttribute="trailing" secondItem="Fps-sP-yga" secondAttribute="trailing" id="4dE-7n-gic"/>
+                            <constraint firstItem="rch-qt-wHO" firstAttribute="leading" secondItem="Fps-sP-yga" secondAttribute="leading" id="5Im-13-n0d"/>
+                            <constraint firstItem="ryb-22-ftd" firstAttribute="top" secondItem="Ag0-Ef-odM" secondAttribute="bottom" constant="8" id="Glf-9n-Kbd"/>
+                            <constraint firstItem="Ag0-Ef-odM" firstAttribute="top" secondItem="Fps-sP-yga" secondAttribute="top" id="T5Y-TU-wfc"/>
+                            <constraint firstItem="Fps-sP-yga" firstAttribute="trailing" secondItem="rch-qt-wHO" secondAttribute="trailing" id="UxV-2u-cYa"/>
+                            <constraint firstItem="Ag0-Ef-odM" firstAttribute="leading" secondItem="Fps-sP-yga" secondAttribute="leading" id="WnU-gU-KQC"/>
+                            <constraint firstItem="ryb-22-ftd" firstAttribute="height" secondItem="Fps-sP-yga" secondAttribute="height" multiplier="0.18" id="ZFh-yc-eHo"/>
+                            <constraint firstItem="rch-qt-wHO" firstAttribute="top" secondItem="ryb-22-ftd" secondAttribute="bottom" id="gJs-YQ-zWB"/>
+                            <constraint firstItem="Fps-sP-yga" firstAttribute="trailing" secondItem="ryb-22-ftd" secondAttribute="trailing" id="him-vb-Yhg"/>
+                            <constraint firstItem="ryb-22-ftd" firstAttribute="leading" secondItem="Fps-sP-yga" secondAttribute="leading" id="ppS-01-niS"/>
+                            <constraint firstItem="Fps-sP-yga" firstAttribute="bottom" secondItem="rch-qt-wHO" secondAttribute="bottom" id="slM-3y-RXc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Fps-sP-yga"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="search" id="ECs-Em-8X4"/>
+                    <connections>
+                        <outlet property="photoGrid" destination="rch-qt-wHO" id="aAw-K2-EOm"/>
+                        <outlet property="searchBar" destination="Ag0-Ef-odM" id="PZA-Uu-cD1"/>
+                        <outlet property="searchDisplayController" destination="3Cv-xP-T6v" id="8CD-JG-JHZ"/>
+                        <outlet property="storyCollectionView" destination="ryb-22-ftd" id="y9V-Z1-elD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIf-o5-ZJV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="3Cv-xP-T6v">
+                    <connections>
+                        <outlet property="delegate" destination="GjJ-JE-K7C" id="vnD-Et-sH4"/>
+                        <outlet property="searchContentsController" destination="GjJ-JE-K7C" id="hDI-oR-jc9"/>
+                        <outlet property="searchResultsDataSource" destination="GjJ-JE-K7C" id="I0M-Uf-aNs"/>
+                        <outlet property="searchResultsDelegate" destination="GjJ-JE-K7C" id="fFA-bF-h1I"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="-1201" y="-210"/>
+            <point key="canvasLocation" x="-1202.4000000000001" y="-210.04497751124438"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="mXN-Ws-DSd">
@@ -155,7 +276,7 @@
                                                         </label>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="76.5" id="5Dw-bM-jM8"/>
+                                                        <constraint firstAttribute="height" priority="750" constant="76.5" id="5Dw-bM-jM8"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>

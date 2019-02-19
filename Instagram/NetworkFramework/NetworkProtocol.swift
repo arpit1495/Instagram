@@ -11,5 +11,5 @@ import UIKit
 
 protocol NetworkProtocol {
     static func get(fromUrl url: URL, completion: @escaping (Any?) -> ())
-    static func retrieveImage(for url: String, completion: @escaping (UIImage?) -> Void)
+    static func retrieveImage(for url: String, completion: @escaping (UIImage?, String) -> Void)
 }

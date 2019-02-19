@@ -8,10 +8,11 @@
 
 import Foundation
 import Alamofire
+import UIKit
 
 class NetworkManager: NetworkProtocol {
     
-    private static let imageCache = NSCache< NSString, NSData>()
+    private static let imageCache = NSCache<NSString, UIImage>()
     
     static func get(fromUrl url: URL, completion: @escaping (Any?) -> ()) {
         Alamofire.request(url.absoluteString).responseJSON { (response) in
@@ -26,19 +27,17 @@ class NetworkManager: NetworkProtocol {
         }
     }
     
-    static func retrieveImage(for url: String, completion: @escaping (UIImage?) -> Void){
+    static func retrieveImage(for url: String, completion: @escaping (UIImage?, String) -> Void){
         
-        if let data = self.imageCache.object(forKey: NSString(string: url)){
-            let image = UIImage(data: data as Data)
-            completion(image)
+        if let cachedImage = self.imageCache.object(forKey: url as NSString) {
+            print("inside if")
+            completion(cachedImage, url)
         }else{
             Alamofire.request(url, method: .get).responseImage { (response) in
                 switch response.result {
                 case .success (let responseObject):
-                    completion(responseObject)
-                    if let data = response.data as NSData?{
-                        imageCache.setObject( data, forKey: NSString(string: url))
-                    }
+                    imageCache.setObject(responseObject, forKey: url as NSString)
+                    completion(responseObject, url)
                     break
                     
                 case .failure:
