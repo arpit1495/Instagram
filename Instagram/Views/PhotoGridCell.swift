@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class PhotoGridCell: UICollectionViewCell {
     
     @IBOutlet weak var image: UIImageView!
     
-    var post: Post?
 }

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		7A05099922118F060099B078 /* StoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A05099822118F060099B078 /* StoryData.swift */; };
 		7A2D71062216B331005D77EF /* PostHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2D71052216B331005D77EF /* PostHeaderView.swift */; };
+		7A803CBE221C37B2002796FB /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A803CBD221C37B2002796FB /* RealmHelper.swift */; };
+		7A874927221A9B5C00B41BA5 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A874926221A9B5C00B41BA5 /* SearchViewController.swift */; };
+		7A87492B221AC3D300B41BA5 /* PhotoGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87492A221AC3D300B41BA5 /* PhotoGridCell.swift */; };
+		7A87492D221ACD0F00B41BA5 /* GridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A87492C221ACD0F00B41BA5 /* GridLayout.swift */; };
 		7A8950452212C7C80090F2BA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8950442212C7C80090F2BA /* Post.swift */; };
 		7A8950472212CCD30090F2BA /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A8950462212CCD30090F2BA /* PostData.swift */; };
 		7A9CC89222116F5600A64087 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9CC89122116F5600A64087 /* StoryCell.swift */; };
@@ -29,6 +33,10 @@
 		597E54E30A95E3DE301D744A /* Pods_Instagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Instagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A05099822118F060099B078 /* StoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryData.swift; sourceTree = "<group>"; };
 		7A2D71052216B331005D77EF /* PostHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostHeaderView.swift; sourceTree = "<group>"; };
+		7A803CBD221C37B2002796FB /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
+		7A874926221A9B5C00B41BA5 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		7A87492A221AC3D300B41BA5 /* PhotoGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGridCell.swift; sourceTree = "<group>"; };
+		7A87492C221ACD0F00B41BA5 /* GridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridLayout.swift; sourceTree = "<group>"; };
 		7A8950442212C7C80090F2BA /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		7A8950462212CCD30090F2BA /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		7A9CC89122116F5600A64087 /* StoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
@@ -39,7 +47,7 @@
 		7AA28F1E2213F2B90040F845 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7ABA974D220D89B200A77472 /* Instagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7ABA9750220D89B200A77472 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7ABA9752220D89B200A77472 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		7ABA9752220D89B200A77472 /* HomeViewController.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; tabWidth = 2; };
 		7ABA9755220D89B200A77472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7ABA9757220D89BC00A77472 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7ABA975A220D89BC00A77472 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,10 +86,19 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		7A803CBC221C379F002796FB /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				7A803CBD221C37B2002796FB /* RealmHelper.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 		7A9CC88E22114ECC00A64087 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				7ABA9752220D89B200A77472 /* HomeViewController.swift */,
+				7A874926221A9B5C00B41BA5 /* SearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -91,6 +108,7 @@
 			children = (
 				7A9CC895221173D400A64087 /* StoryLayout.swift */,
 				7A9CC897221173E700A64087 /* PostLayout.swift */,
+				7A87492C221ACD0F00B41BA5 /* GridLayout.swift */,
 			);
 			path = Layouts;
 			sourceTree = "<group>";
@@ -101,6 +119,7 @@
 				7A9CC89122116F5600A64087 /* StoryCell.swift */,
 				7A9CC89322116F6900A64087 /* PostCell.swift */,
 				7A2D71052216B331005D77EF /* PostHeaderView.swift */,
+				7A87492A221AC3D300B41BA5 /* PhotoGridCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +154,7 @@
 		7ABA974F220D89B200A77472 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
+				7A803CBC221C379F002796FB /* Helper */,
 				7AA28F1B2213F02A0040F845 /* NetworkFramework */,
 				7A05099722118EE60099B078 /* Data */,
 				7A9CC89022114F4B00A64087 /* Views */,
@@ -239,6 +259,8 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -248,6 +270,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,8 +316,12 @@
 				7A2D71062216B331005D77EF /* PostHeaderView.swift in Sources */,
 				7A9CC896221173D400A64087 /* StoryLayout.swift in Sources */,
 				7ABA9751220D89B200A77472 /* AppDelegate.swift in Sources */,
+				7A87492B221AC3D300B41BA5 /* PhotoGridCell.swift in Sources */,
+				7A874927221A9B5C00B41BA5 /* SearchViewController.swift in Sources */,
 				7A05099922118F060099B078 /* StoryData.swift in Sources */,
 				7A9CC89222116F5600A64087 /* StoryCell.swift in Sources */,
+				7A87492D221ACD0F00B41BA5 /* GridLayout.swift in Sources */,
+				7A803CBE221C37B2002796FB /* RealmHelper.swift in Sources */,
 				7A9CC89422116F6900A64087 /* PostCell.swift in Sources */,
 				7A8950452212C7C80090F2BA /* Post.swift in Sources */,
 			);

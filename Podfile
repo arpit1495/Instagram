@@ -10,5 +10,6 @@ target 'Instagram' do
   pod 'SwiftyJSON', '~> 4.0.0'
   pod 'ObjectMapper', '~> 3.4'
   pod 'AlamofireImage', '~> 3.5'
+  pod 'RealmSwift', '~> 3.13.1'
 
 end

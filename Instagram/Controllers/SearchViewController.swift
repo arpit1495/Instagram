@@ -20,10 +20,10 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let height = storyCollectionView.bounds.size.height - 16
+        let height = storyCollectionView.bounds.size.height
         let storyLayout = storyCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         storyLayout.itemSize = CGSize(width: height, height: height)
-        storyCollectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
+        //storyCollectionView.contentInset = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
                 
         //prepare grid
         arrInstaBigCells.append(1)
@@ -84,21 +84,15 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoGrid", for: indexPath) as! PhotoGridCell
             let post = posts[indexPath.item]
-            cell.post = post
+            cell.image.image = nil
             let closureIndex = indexPath
-            guard let image = post.image else{
-                cell.image.image = nil
-                NetworkManager.retrieveImage(for: post.imageUrl!, completion: {[unowned self] response, url in
-                    if(self.posts[indexPath.item].imageUrl == url && closureIndex.item == indexPath.item){
-                        let image = response
-                        self.posts[indexPath.item].image = image
-                        cell.image.image = image
-                        self.photoGrid.reloadItems(at: [indexPath])
-                    }
-                })
-                return cell
-            }
-            cell.image.image = image
+            NetworkManager.retrieveImage(for: post.imageUrl, completion: {[unowned self] response, url in
+                if(self.posts[indexPath.item].imageUrl == url && closureIndex.item == indexPath.item){
+                    let image = response
+                    cell.image.image = image
+                    self.photoGrid.reloadItems(at: [indexPath])
+                }
+            })
             return cell
         }
     }

@@ -9,13 +9,21 @@
 import Foundation
 import UIKit
 import ObjectMapper
+import RealmSwift
+import Realm
 
-class User: Mappable {
-    var id: Int?
-    var name: String?
-    var avatarUrl: String?
+
+@objcMembers class User: Object, Mappable {
+    dynamic var id = 0
+    dynamic var name = ""
+    dynamic var avatarUrl = ""
     
-    required init?(map: Map) {
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    
+    required convenience init?(map: Map) {
+        self.init()
     }
     
     func mapping(map: Map) {
@@ -27,21 +35,42 @@ class User: Mappable {
     
 }
 
-class Post: Mappable {
+@objcMembers class Post: Object, Mappable {
     
+    dynamic var user: User? = nil
+    dynamic var id = 0
+    dynamic var caption = ""
+    dynamic var location = ""
+    dynamic var likes = 0
+    dynamic var comments = 0
+    dynamic var imageUrl = ""
+    dynamic var likeStatus = false
     
-    var user: User?
-    var id: Int?
-    var caption: String?
-    var location: String?
-    var likes: Int?
-    var comments: Int?
-    var imageUrl: String?
-    var likeStatus: Bool?
-    var image: UIImage?
+    override init(value: Any) {
+        super.init(value: value)
+        if let user = self.user{
+            self.user = User(value: user)
+        }
+    }
     
-    required init?(map: Map) {
-        
+    required convenience init?(map: Map) {
+        self.init()
+    }
+    
+    required init() {
+       super.init()
+    }
+    
+    required init(realm: RLMRealm, schema: RLMObjectSchema) {
+        super.init(realm: realm, schema: schema)
+    }
+    
+    required init(value: Any, schema: RLMSchema) {
+        super.init(value: value, schema: schema)
+    }
+    
+    override static func primaryKey() -> String? {
+        return "id"
     }
     
     func mapping(map: Map) {
@@ -53,5 +82,42 @@ class Post: Mappable {
         comments <- map["comments"]
         imageUrl <- map["imageUrl"]
         likeStatus <- map["likeStatus"]
+    }
+    
+}
+
+extension Post{
+    static let serialQueue = DispatchQueue(label: ".realm", qos: .userInitiated)
+    
+    static func all(in realm: Realm = try! Realm()) -> Results<Post> {
+        return realm.objects(Post.self)
+    }
+    
+    static func add(post: Post) {
+        serialQueue.async {
+            let realm: Realm = try! Realm()
+            let item = post
+            try! realm.write {
+                realm.add(item, update: true)
+            }
+        }
+    }
+
+    
+    func changeLikes(){
+        let object = Post(value: self)
+        Post.serialQueue.async { [unowned self] in
+            let realm: Realm = try! Realm()
+            try! realm.write {
+                if(object.likeStatus){
+                    object.likes -= 1
+                    object.likeStatus = false
+                }else{
+                    object.likes += 1
+                    object.likeStatus = true
+                }
+                realm.add(object, update: true)
+            }
+        }
     }
 }

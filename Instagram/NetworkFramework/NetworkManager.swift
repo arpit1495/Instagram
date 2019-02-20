@@ -30,7 +30,6 @@ class NetworkManager: NetworkProtocol {
     static func retrieveImage(for url: String, completion: @escaping (UIImage?, String) -> Void){
         
         if let cachedImage = self.imageCache.object(forKey: url as NSString) {
-            print("inside if")
             completion(cachedImage, url)
         }else{
             Alamofire.request(url, method: .get).responseImage { (response) in
@@ -46,6 +45,14 @@ class NetworkManager: NetworkProtocol {
                 }
             }
         
+        }
+    }
+    
+    static func getImageWithURLFromCache(_ url: String) -> UIImage?{
+        if let cachedImage = self.imageCache.object(forKey: url as NSString) {
+            return cachedImage
+        }else{
+            return nil
         }
     }
 }
